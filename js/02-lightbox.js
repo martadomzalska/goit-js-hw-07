@@ -1,6 +1,6 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
-const gallery = document.querySelector(".gallery");
+let gallery = document.querySelector(".gallery");
 for (const item of galleryItems) {
   const link = document.createElement("a");
   link.setAttribute("href", item.original);
@@ -13,5 +13,8 @@ for (const item of galleryItems) {
   link.append(image);
   gallery.append(link);
 }
+
+gallery.next(); // Next Image
+
 console.log(gallery);
 console.log(galleryItems);

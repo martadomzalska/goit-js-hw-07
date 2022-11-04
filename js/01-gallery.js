@@ -1,18 +1,24 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 const gallery = document.querySelector(".gallery");
-console.log(gallery);
 for (const item of galleryItems) {
-  const image = document.createElement("img");
-  image.setAttribute("src", item.preview);
-  image.setAttribute("alt", item.description);
-  image.setAttribute("data-source", item.original);
-  image.classList.add("gallery__image");
-  gallery.append(image);
+  gallery.insertAdjacentHTML(
+    "beforeend",
+    `<div class="gallery__item">
+      <a class="gallery__link" href="${item.original}">
+        <img
+          class="gallery__image"
+          src="${item.preview}"
+          data-source="${item.original}"
+          alt="Image description"
+        />
+      </a>
+    </div>`
+  );
 }
-console.log(galleryItems);
 
 function showPic(event) {
+  event.preventDefault();
   if (event.target.nodeName !== "IMG") {
     return;
   }
@@ -21,7 +27,6 @@ function showPic(event) {
       "data-source"
     )}" width="800" height="600">
 `);
-
   instance.show();
 }
 
